@@ -3,6 +3,12 @@ import React, { Component } from 'react';
 
 export default class Modal extends Component {
   render() {
-    return <form></form>;
+    return (
+      <div class="overlay">
+        <div class="modal">
+          <img src="" alt="" />
+        </div>
+      </div>
+    );
   }
 }

@@ -3,6 +3,10 @@ import React, { Component } from 'react';
 
 export default class ImagineGallery extends Component {
   render() {
-    return <ul type="submit">Add Gallery</ul>;
+    return (
+      <ul class="gallery" type="submit">
+        Add Gallery
+      </ul>
+    );
   }
 }
