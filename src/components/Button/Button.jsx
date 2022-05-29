@@ -5,8 +5,8 @@ import bcss from './button.module.css';
 export default class Button extends Component {
   render() {
     return (
-      <button className={bcss.utton} type="submit">
-        Add contact
+      <button onClick={this.props.click} className={bcss.button} type="submit">
+        Fetch Users
       </button>
     );
   }

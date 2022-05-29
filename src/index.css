@@ -13,3 +13,28 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.userlist-container {
+  display: flex;
+}
+.user-container {
+  display: flex;
+  flex-direction: column-reverse;
+  flex-basis: auto;
+}
+.user-container img {
+  width: 255px;
+  min-height: 255px;
+  margin-bottom: 25px;
+}
+.last-name {
+  text-align: start;
+  letter-spacing: 0.05em;
+}
+.user-container .last-name::before {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
+  margin-right: 5px;
+  color: darkblue;
+  word-spacing: 0.25em;
+  content: 'e-mail:';
+}
