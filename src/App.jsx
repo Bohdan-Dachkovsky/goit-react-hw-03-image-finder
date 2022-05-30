@@ -12,15 +12,15 @@ import Searchbar from 'components/Searchbar/Searchbar';
 import 'index.css';
 import WatchProps from 'components/Loader/Watch';
 export default function App() {
-  const [users, setUsers] = useState([]);
+  const [cat, setCats] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const handleFetch = () => {
     setIsLoading(true);
-    fetch('https://reqres.in/api/users?page=0')
+    fetch('https://reqres.in/api/cat?page')
       .then(respose => respose.json())
       .then(respose => {
-        setUsers(respose.data);
+        setCats(respose.data);
         setIsLoading(false);
         // Optional code to simulate delay
         // setTimeout(() => {
@@ -29,7 +29,7 @@ export default function App() {
         // }, 3000);
       })
       .catch(() => {
-        setErrorMessage('Unable to fetch user list');
+        setErrorMessage('Unable to fetch cats list');
         setIsLoading(false);
       });
   };
@@ -40,7 +40,7 @@ export default function App() {
         <WatchProps />
       ) : (
         <div className="userlist-container">
-          {users.map((item, index) => (
+          {cat.map((item, index) => (
             <div className="user-container" key={index}>
               <img src={item.avatar} alt="" />
               <div className="userDetail">
