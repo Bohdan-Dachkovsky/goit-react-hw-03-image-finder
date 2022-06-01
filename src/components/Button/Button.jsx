@@ -6,7 +6,7 @@ export default class Button extends Component {
   render() {
     return (
       <button onClick={this.props.click} className={bcss.button} type="submit">
-        Fetch Users
+        Load more
       </button>
     );
   }

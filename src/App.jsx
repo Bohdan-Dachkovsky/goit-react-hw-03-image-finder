@@ -8,6 +8,7 @@ import ImagineGalleryItem from 'components/ImagineGalleryItem/ImagineGalleryItem
 // import Loader from 'components/Loader/Loader';
 import Modal from 'components/Modal/Modal';
 import Searchbar from 'components/Searchbar/Searchbar';
+
 // import WatchProps from 'components/Loader/Watch.jsx';
 import 'index.css';
 import WatchProps from 'components/Loader/Watch';
@@ -53,12 +54,15 @@ export default function App() {
         </div>
       )}
       {errorMessage && <div className="error">{errorMessage}</div>}
+
+      <ImagineGallery>
+        <ImagineGalleryItem>
+          <Modal />
+        </ImagineGalleryItem>
+      </ImagineGallery>
+      {/* {isLoading ? <loader /> : renderUser} */}
       <Button click={handleFetch.bind(this)} disabled={isLoading} />
 
-      <ImagineGallery />
-      <ImagineGalleryItem />
-      {/* {isLoading ? <loader /> : renderUser} */}
-      <Modal />
       <Searchbar />
       {/* <WatchProps /> */}
     </div>

@@ -5,7 +5,7 @@ export default class ImagineGallery extends Component {
   render() {
     return (
       <ul class="gallery" type="submit">
-        Add Gallery
+        {this.props.children}
       </ul>
     );
   }
