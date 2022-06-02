@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 // import { v4 as uuidv4 } from 'uuid';
-// import  from './ContactList/ContactList';
 // import Modal from 'components/Modal/Modal';
 import Button from 'components/Button/Button';
 import ImagineGallery from 'components/ImagineGallery/ImagineGallery';
@@ -28,7 +27,7 @@ export default function App() {
         // }, 3000);
       })
       .catch(() => {
-        setErrorMessage('Unable to fetch cats list');
+        setErrorMessage('Unable to fetch user list');
         setIsLoading(false);
       });
   };
