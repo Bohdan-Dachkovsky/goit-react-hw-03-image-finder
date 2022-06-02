@@ -5,7 +5,7 @@ import Button from 'components/Button/Button';
 import ImagineGallery from 'components/ImagineGallery/ImagineGallery';
 import ImagineGalleryItem from 'components/ImagineGalleryItem/ImagineGalleryItem';
 import Searchbar from 'components/Searchbar/Searchbar';
-import 'index.css';
+import s from './index.module.css';
 import WatchProps from 'components/Loader/Watch';
 
 export default function App() {
@@ -37,26 +37,28 @@ export default function App() {
       {isLoading ? (
         <WatchProps />
       ) : (
-        <div className="userlist-container">
+        <div className={s.userContainer}>
           {users.map((item, index) => (
-            <div className="user-container" key={index}>
+            <div className={s.userContainer} key={index}>
               <img src={item.avatar} alt="" />
-              <div className="userDetail">
-                <div className="first-name">{`${item.first_name}                
+              <div className={s.userDetail}>
+                <div
+                  className={s.firstname}
+                >{`${item.first_name}                
                                    ${item.last_name}`}</div>
-                <div className="last-name">{item.email}</div>
+                <div className={s.lastName}>{item.email}</div>
               </div>
             </div>
           ))}
         </div>
       )}
       {errorMessage && <div className="error">{errorMessage}</div>}
-      <Searchbar click={handleFetch.bind(this)} disabled={isLoading} />
+      <Searchbar />
       <ImagineGallery>
         <ImagineGalleryItem />
       </ImagineGallery>
 
-      <Button />
+      <Button click={handleFetch.bind(this)} disabled={isLoading} />
     </div>
   );
 }
