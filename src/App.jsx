@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 // import { v4 as uuidv4 } from 'uuid';
-// import Modal from 'components/Modal/Modal';
+import Modal from 'components/Modal/Modal';
 import Button from 'components/Button/Button';
 import ImagineGallery from 'components/ImagineGallery/ImagineGallery';
 import ImagineGalleryItem from 'components/ImagineGalleryItem/ImagineGalleryItem';
 import Searchbar from 'components/Searchbar/Searchbar';
-import s from './index.module.css';
+import s from './index.css';
 import WatchProps from 'components/Loader/Watch';
 
 export default function App() {
@@ -33,7 +33,7 @@ export default function App() {
   };
 
   return (
-    <div className="App">
+    <div>
       {isLoading ? (
         <WatchProps />
       ) : (
@@ -41,9 +41,9 @@ export default function App() {
           {users.map((item, index) => (
             <div className={s.userContainer} key={index}>
               <img src={item.avatar} alt="" />
-              <div className={s.userDetail}>
+              <div>
                 <div
-                  className={s.firstname}
+                  className={s.firstName}
                 >{`${item.first_name}                
                                    ${item.last_name}`}</div>
                 <div className={s.lastName}>{item.email}</div>
@@ -52,12 +52,12 @@ export default function App() {
           ))}
         </div>
       )}
-      {errorMessage && <div className="error">{errorMessage}</div>}
+      {errorMessage && <div className={s.error}>{errorMessage}</div>}
       <Searchbar />
       <ImagineGallery>
         <ImagineGalleryItem />
       </ImagineGallery>
-
+      <Modal />
       <Button click={handleFetch.bind(this)} disabled={isLoading} />
     </div>
   );

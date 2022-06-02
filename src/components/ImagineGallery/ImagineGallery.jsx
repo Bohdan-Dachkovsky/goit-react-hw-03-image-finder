@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 export default class ImagineGallery extends Component {
   render() {
     return (
-      <ul class="gallery" type="submit">
+      <ul className={''} type="submit">
         {this.props.children}
       </ul>
     );

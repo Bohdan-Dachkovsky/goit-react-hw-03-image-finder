@@ -38,3 +38,6 @@ code {
   word-spacing: 0.25em;
   content: 'e-mail:';
 }
+.error {
+  color: red;
+}
