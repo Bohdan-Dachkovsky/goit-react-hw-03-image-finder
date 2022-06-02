@@ -2,26 +2,24 @@ import React from 'react';
 import { useState } from 'react';
 // import { v4 as uuidv4 } from 'uuid';
 // import  from './ContactList/ContactList';
+// import Modal from 'components/Modal/Modal';
 import Button from 'components/Button/Button';
 import ImagineGallery from 'components/ImagineGallery/ImagineGallery';
 import ImagineGalleryItem from 'components/ImagineGalleryItem/ImagineGalleryItem';
-// import Loader from 'components/Loader/Loader';
-import Modal from 'components/Modal/Modal';
 import Searchbar from 'components/Searchbar/Searchbar';
-
-// import WatchProps from 'components/Loader/Watch.jsx';
 import 'index.css';
 import WatchProps from 'components/Loader/Watch';
+
 export default function App() {
-  const [cat, setCats] = useState([]);
+  const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const handleFetch = () => {
     setIsLoading(true);
-    fetch('https://reqres.in/api/cat?page')
+    fetch('https://reqres.in/api/users?page=1')
       .then(respose => respose.json())
       .then(respose => {
-        setCats(respose.data);
+        setUsers(respose.data);
         setIsLoading(false);
         // Optional code to simulate delay
         // setTimeout(() => {
@@ -41,7 +39,7 @@ export default function App() {
         <WatchProps />
       ) : (
         <div className="userlist-container">
-          {cat.map((item, index) => (
+          {users.map((item, index) => (
             <div className="user-container" key={index}>
               <img src={item.avatar} alt="" />
               <div className="userDetail">
@@ -54,17 +52,12 @@ export default function App() {
         </div>
       )}
       {errorMessage && <div className="error">{errorMessage}</div>}
-
+      <Searchbar click={handleFetch.bind(this)} />
       <ImagineGallery>
-        <ImagineGalleryItem>
-          <Modal />
-        </ImagineGalleryItem>
+        <ImagineGalleryItem></ImagineGalleryItem>
       </ImagineGallery>
-      {/* {isLoading ? <loader /> : renderUser} */}
-      <Button click={handleFetch.bind(this)} disabled={isLoading} />
 
-      <Searchbar />
-      {/* <WatchProps /> */}
+      <Button />
     </div>
   );
 }
