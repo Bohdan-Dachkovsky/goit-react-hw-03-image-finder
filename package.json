@@ -5,13 +5,15 @@
   "homepage": "https://bohdan-dachkovsky.github.io/goit-react-hw-03-image-finder/",
   "dependencies": {
     "axios": "^0.27.2",
+    "core-js": "^3.22.8",
     "gh-pages": "^4.0.0",
+    "lint": "^1.1.2",
     "modern-normalize": "^1.1.0",
     "npm": "^8.12.0",
     "npm-install": "^1.8.13",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "react-scripts": "^2.1.3"
+    "react-scripts": "^5.0.1"
   },
   "scripts": {
     "start": "react-scripts start",

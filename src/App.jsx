@@ -13,9 +13,10 @@ export default function App() {
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+
   const handleFetch = () => {
     setIsLoading(true);
-    fetch('https://reqres.in/api/users?page=1')
+    fetch('https://reqres.in/api/users?page=0')
       .then(respose => respose.json())
       .then(respose => {
         setUsers(respose.data);
@@ -51,9 +52,9 @@ export default function App() {
         </div>
       )}
       {errorMessage && <div className="error">{errorMessage}</div>}
-      <Searchbar click={handleFetch.bind(this)} />
+      <Searchbar click={handleFetch.bind(this)} disabled={isLoading} />
       <ImagineGallery>
-        <ImagineGalleryItem></ImagineGalleryItem>
+        <ImagineGalleryItem />
       </ImagineGallery>
 
       <Button />

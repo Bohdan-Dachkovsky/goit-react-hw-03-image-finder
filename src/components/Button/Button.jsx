@@ -5,7 +5,12 @@ import bcss from './button.module.css';
 export default class Button extends Component {
   render() {
     return (
-      <button onClick={this.props.click} className={bcss.button} type="submit">
+      <button
+        onClick={this.props.click}
+        disabled={this.props.isLoading}
+        className={bcss.button}
+        type="submit"
+      >
         Load more
       </button>
     );
