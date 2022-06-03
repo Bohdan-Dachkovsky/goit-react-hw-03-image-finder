@@ -1,1 +1,1 @@
-// export { default as WatchProps } from './Watch.jsx';
+export { default as WatchProps } from './Watch.jsx';

@@ -6,10 +6,9 @@ export default class Searchbar extends Component {
   state = {
     cats: '',
   };
-  handleChange = target => {
-    const { name, value } = target;
+  handleChange = event => {
     this.setState({
-      [name]: value.toLowerCase(),
+      cats: event.currentTarget.value.toLowerCase(),
     });
   };
   handleForm = event => {
@@ -19,7 +18,7 @@ export default class Searchbar extends Component {
       alert('Коти відсутні!');
       return;
     }
-    this.props.onSubmit(this.state.cats);
+
     this.setState({ cats: '' });
   };
   render() {
