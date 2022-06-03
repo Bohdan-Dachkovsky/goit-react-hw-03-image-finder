@@ -18,7 +18,7 @@ export default class Searchbar extends Component {
       alert('Коти відсутні!');
       return;
     }
-
+    this.props.onSubmit(this.state.cats);
     this.setState({ cats: '' });
   };
   render() {

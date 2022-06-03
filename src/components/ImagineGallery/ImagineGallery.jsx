@@ -4,7 +4,7 @@ import Button from '../Button/Button.jsx';
 // import PropTypes from 'prop-types';
 import s from '../../index.css';
 
-export default function ImagineGallery(prop) {
+export default function ImagineGallery() {
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
