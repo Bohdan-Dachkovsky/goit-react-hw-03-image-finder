@@ -1,33 +1,29 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
-import axios from 'axios';
+// import axios from 'axios';
 
 export default class ImagineGalleryItem extends Component {
-  // state = {
-  //   cats: [],
-  //   err: null,
-  // };
+  state = { apiInfo: '' };
 
-  // fetchNewCat() {
-  //   axios
-  //     .get('https://api.thecatapi.com/v1/images/search')
-  //     .then(response => {
-  //       console.log('Search complete!');
-  //       console.log(response);
-  //     })
-  //     .catch(err => {
-  //       console.log('Search failed!');
-  //       console.log(err);
-  //     });
-  // }
+  getCatFoto = () => {
+    fetch(
+      'https://pixabay.com/api/?q=cat&page=1&key=26335917-be25fd704b1936d7f202ea389&image_type=photo&orientation=horizontal&per_page=12'
+    )
+      .then(response => {
+        return response.json();
+      })
+      .then(function (jsonData) {
+        return JSON.stringify(jsonData);
+      })
+      .then(data => this.setState({ apiInfo: data }));
+  };
+
   render() {
     return (
-      <li>
-        <button>Add cats</button>
-        {/* {this.state.cats.map(cat => (
-          <img> src = {cat.src}</img>
-        ))} */}
-      </li>
+      <div>
+        {this.state.apiInfo &&
+          this.state.apiInfo.map(item => <div> {item.img} </div>)}
+      </div>
     );
   }
 }
