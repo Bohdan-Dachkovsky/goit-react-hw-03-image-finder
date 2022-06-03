@@ -9,6 +9,13 @@ import s from './index.css';
 import WatchProps from 'components/Loader/Watch';
 
 export default function App() {
+  // const state = {
+  //   cats: '',
+  // };
+  // formSubmit = cats => {
+  //   this.setState({ cats });
+  // };
+
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
