@@ -7,22 +7,24 @@ export default class ImagineGalleryItem extends Component {
 
   getCatFoto = () => {
     fetch(
-      'https://pixabay.com/api/?q=cat&page=1&key=26335917-be25fd704b1936d7f202ea389&image_type=photo&orientation=horizontal&per_page=12'
+      'https: //pixabay.com/api/?key=26335917-be25fd704b1936d7f202ea389&q=yellow+flowers&image_type=photo'
     )
-      .then(response => {
-        return response.json();
-      })
-      .then(function (jsonData) {
-        return JSON.stringify(jsonData);
-      })
-      .then(data => this.setState({ apiInfo: data }));
+      .then(res => res.json())
+      .then(res => this.setState({ apiInfo: res.hits() }));
+    // .then(data => this.setState({ apiInfo: data }));
   };
 
   render() {
     return (
       <div>
         {this.state.apiInfo &&
-          this.state.apiInfo.map(item => <div> {item.img} </div>)}
+          this.state.apiInfo.map(item => (
+            <div>
+              <li key={item.id}>
+                <img src={item.webformatUrl} alt={item.tags} />
+              </li>
+            </div>
+          ))}
       </div>
     );
   }
