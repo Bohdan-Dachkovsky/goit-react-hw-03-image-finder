@@ -30,15 +30,17 @@ export default class Searchbar extends Component {
           <button type="submit" className={stylebar.button}>
             <span className={stylebar.buttonLabel}>Search</span>
           </button>
-
-          <input
-            className={stylebar.input}
-            type="text"
-            name="cats"
-            value={cats}
-            placeholder="Search images and photos"
-            onChange={handleChange}
-          />
+          <label htmlFor="searchPhoto">
+            <input
+              className={stylebar.input}
+              type="text"
+              name="cats"
+              id="searchPhoto"
+              value={cats}
+              placeholder="Search images and photos"
+              onChange={handleChange}
+            />
+          </label>
         </form>
       </header>
     );

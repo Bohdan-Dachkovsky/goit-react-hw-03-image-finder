@@ -21,8 +21,8 @@ export default class App extends Component {
     return (
       <div>
         <Searchbar onSubmit={this.handlerSubmit.bind(this)} />
-        <ImagineGallery></ImagineGallery>
         <Modal />
+        <ImagineGallery></ImagineGallery>
         <ImagineGalleryItem />
       </div>
     );
