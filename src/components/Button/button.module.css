@@ -1,14 +1,13 @@
 .button {
-  background-color: #bfffc1;
-
-  border: none;
+  position: absolute;
   color: black;
-  margin: 5px 200px;
-  background-color: rgb(199, 199, 228);
-  padding: 9px;
-  text-align: center;
+  padding: 0px;
+  width: 35px;
+  height: 30px;
+  top: 0px;
+  left: 475px;
+  border: 0px;
   text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  cursor: pointer;
+  border-radius: 0px;
+  background-color: white;
 }

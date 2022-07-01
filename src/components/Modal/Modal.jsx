@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
-import css from './popup.module.css';
+import NativeModal from '../NativeModal/NativeModal.jsx';
 export default class Modal extends Component {
+  state = {
+    showModal: true,
+  };
+  onToggleModal = () => {
+    this.setState(showModal => {
+      return { showModal: !showModal };
+    });
+  };
+
   render() {
-    return (
-      <div id="popup" className={css.popup}>
-        <div className={css.overlay}>
-          <div className={css.formBody}>
-            <img src="" alt="" loading="eager" />
-          </div>
-        </div>
-      </div>
-    );
+    const { showModal } = this.state;
+    return <>{showModal && <NativeModal button={this.onToggleModal} />}</>;
   }
 }
