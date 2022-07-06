@@ -1,55 +1,58 @@
-// import React, { useState } from 'react';
-// import WatchProps from '../Loader/Watch.jsx';
-
+import React, { Component } from 'react';
+import css from './gallery.module.css';
 // import PropTypes from 'prop-types';
-// import s from '../../index.css';
+// import axios from 'axios';
+import { getPosts } from '../../shared/services/post.js';
+export default class ImagineGallery extends Component {
+  state = {
+    // apiInfo: '',
+    items: [],
+    error: null,
+    page: 1,
+    isLoading: false,
+  };
+  componentDidMount() {
+    this.fetchPosts();
+  }
+  componentDidUpdate(prevProps, prevState) {
+    const { page } = this.state;
+    if (page > prevState.page) {
+      this.fetchPosts();
+    }
+  }
+  async fetchPosts() {
+    const { page } = this.state;
+    try {
+      const data = await getPosts(page);
+      this.setState(({ items }) => {
+        return { items: [...items, ...data] };
+      });
+    } catch (error) {
+      this.setState({ error: error });
+    }
+  }
+  loadPage(prevState) {
+    this.setState({ page: prevState.page + 1 });
+  }
 
-export default function ImagineGallery() {
-  // const [users, setUsers] = useState([]);
-  // const [isLoading, setIsLoading] = useState(false);
-  // const [errorMessage, setErrorMessage] = useState('');
-
-  // const handleFetch = () => {
-  //   setIsLoading(true);
-  //   fetch('https://reqres.in/api/users?page=0')
-  //     .then(respose => respose.json())
-  //     .then(respose => {
-  //       setUsers(respose.data);
-  //       setIsLoading(false);
-  //       // Optional code to simulate delay
-  //       // setTimeout(() => {
-  //       //   setUsers(respose.data);
-  //       //   setIsLoading(false);
-  //       // }, 3000);
-  //     })
-  //     .catch(() => {
-  //       setErrorMessage('Unable to fetch user list');
-  //       setIsLoading(false);
-  //     });
-  // };
-
-  return (
-    <div>
-      {/* {isLoading ? (
-        <WatchProps />
-      ) : (
-        <div className={s.userContainer}>
-          {users.map((item, index) => (
-            <div className={s.userContainer} key={index}>
-              <img src={item.avatar} alt="" />
-              <div>
-                <div
-                  className={s.firstName}
-                >{`${item.first_name} ${item.last_name}`}</div>
-                <div className={s.lastName}>{item.email}</div>
-              </div>
+  render() {
+    const { items, error, isLoading } = this.state;
+    const { onLoader } = this.props;
+    return (
+      <div>
+        {error && console.log('Виникла помилка, cпробуйте будь ласка пізніше')}
+        {items &&
+          items.map(({ id, imagineURL, title }) => (
+            <div className={css.box}>
+              <li onClick={onLoader} key={id}>
+                <img src={imagineURL} alt={title} />
+              </li>
             </div>
-          ))}{' '} */}
-      {/* </div>
-      )} */}
-      {/* // {errorMessage && <div c lassName={s.error}>{errorMessage}</div>}
-      // {<Button click={handleFetch} disabled={isLoading} />} */}
-      <ul type="submit"></ul>
-    </div>
-  );
+          ))}
+        {!isLoading && items.length >= 9 && (
+          <button onClick={this.loadPage}></button>
+        )}
+      </div>
+    );
+  }
 }

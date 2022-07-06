@@ -21,8 +21,8 @@ export default class Searchbar extends Component {
     this.props.onSubmit(this.state.cats);
     this.setState({ cats: '' });
   };
+
   render() {
-    const { cats } = this.state;
     const { handleForm, handleChange } = this;
     return (
       <header className={stylebar.searchbar}>
@@ -36,7 +36,6 @@ export default class Searchbar extends Component {
               type="text"
               name="cats"
               id="searchPhoto"
-              value={cats}
               placeholder="Search images and photos"
               onChange={handleChange}
             />
