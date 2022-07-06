@@ -42,7 +42,7 @@ export default class ImagineGallery extends Component {
       <div>
         {error && console.log('Виникла помилка, cпробуйте будь ласка пізніше')}
         {items &&
-          items.map(({ id, imagineURL, title }) => (
+          items.map(({ id, imagineURL, tags }) => (
             <div className={css.box}>
               <li onClick={onLoader} key={id}>
                 <img src={imagineURL} alt={title} />
