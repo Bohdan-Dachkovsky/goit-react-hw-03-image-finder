@@ -45,7 +45,7 @@ export default class ImagineGallery extends Component {
           items.map(({ id, imagineURL, tags }) => (
             <div className={css.box}>
               <li onClick={onLoader} key={id}>
-                <img src={imagineURL} alt={title} />
+                <img src={imagineURL} alt={tags} />
               </li>
             </div>
           ))}
