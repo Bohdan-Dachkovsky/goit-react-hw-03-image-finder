@@ -8,14 +8,14 @@ import './index.css';
 
 export default class App extends Component {
   state = {
-    cats: '',
+    pool: '',
     isLoading: false,
   };
   loaderChange = prevState => {
     this.setState({ isLoading: !prevState });
   };
-  handlerSubmit = cats => {
-    this.setState({ cats });
+  handlerSubmit = pool => {
+    this.setState({ pool });
   };
 
   render() {
@@ -23,11 +23,25 @@ export default class App extends Component {
     return (
       <>
         <Searchbar onSubmit={this.handlerSubmit.bind(this)} />
+        <ToastContainer
+          position="top-right"
+          autoClose={3500}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
         <Modal />
         {isLoading ? (
           <WatchProps />
         ) : (
-          <ImagineGallery onLoader={this.loaderChange.bind(this)} />
+          <ImagineGallery
+            searchName={this.state.pool}
+            onLoader={this.loaderChange.bind(this)}
+          />
         )}
       </>
     );

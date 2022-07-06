@@ -2,24 +2,34 @@ import React, { Component } from 'react';
 
 // import PropTypes from 'prop-types';
 import stylebar from './style-bar.module.css';
+import toast from 'react-toastify';
 export default class Searchbar extends Component {
   state = {
-    cats: '',
+    pool: '',
   };
   handleChange = event => {
     this.setState({
-      cats: event.currentTarget.value.toLowerCase(),
+      pool: event.currentTarget.value.toLowerCase(),
     });
   };
   handleForm = event => {
     event.preventDefault();
 
-    if (this.state.cats === '') {
-      alert('Коти відсутні!');
+    if (this.state.pool.trim() === '') {
+      toast.warn('Фото басейна не загрузилися!', {
+        position: 'top-right',
+        autoClose: 3500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: 1,
+      });
+
       return;
     }
-    this.props.onSubmit(this.state.cats);
-    this.setState({ cats: '' });
+    this.props.onSubmit(this.state.pool);
+    this.setState({ pool: '' });
   };
 
   render() {
@@ -34,7 +44,7 @@ export default class Searchbar extends Component {
             <input
               className={stylebar.input}
               type="text"
-              name="cats"
+              name="pool"
               id="searchPhoto"
               placeholder="Search images and photos"
               onChange={handleChange}

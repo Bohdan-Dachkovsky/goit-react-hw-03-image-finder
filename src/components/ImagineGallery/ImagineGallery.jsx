@@ -22,8 +22,9 @@ export default class ImagineGallery extends Component {
   }
   async fetchPosts() {
     const { page } = this.state;
+    const { q } = this.props.searchPool;
     try {
-      const data = await getPosts(page);
+      const data = await getPosts(q, page);
       this.setState(({ items }) => {
         return { items: [...items, ...data] };
       });
