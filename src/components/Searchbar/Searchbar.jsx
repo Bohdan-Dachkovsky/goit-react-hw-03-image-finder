@@ -16,7 +16,7 @@ export default class Searchbar extends Component {
     event.preventDefault();
 
     if (this.state.pool.trim() === '') {
-      toast.warn('Фото басейна не загрузилися!', {
+      toast.warn(`Фото ${this.state.pool} не загрузилися`, {
         position: 'top-right',
         autoClose: 3500,
         hideProgressBar: false,

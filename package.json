@@ -6,7 +6,9 @@
   "dependencies": {
     "axios": "^0.27.2",
     "core-js": "^3.22.8",
+    "ctrl-c": "^2.3.2",
     "gh-pages": "^4.0.0",
+    "htop": "^1.0.1",
     "lint": "^1.1.2",
     "modern-normalize": "^1.1.0",
     "npm": "^8.12.1",
@@ -14,7 +16,9 @@
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-loader-spinner": "^5.1.5",
+    "react-script": "^2.0.5",
     "react-scripts": "^2.1.3",
+    "react-toastify": "^9.0.5",
     "reactjs-popup": "^2.0.5",
     "watch-props": "^0.0.3",
     "yarn": "^1.22.19"
@@ -47,5 +51,17 @@
   },
   "devDependencies": {
     "web-vitals": "^2.1.4"
+  },
+  "description": "**Read in other languages: [Русский](README.md), [Polska](README.pl.md).**",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bohdan-Dachkovsky/goit-react-hw-03-image-finder.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bohdan-Dachkovsky/goit-react-hw-03-image-finder/"
   }
 }
