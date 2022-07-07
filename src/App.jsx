@@ -23,17 +23,6 @@ export default class App extends Component {
     return (
       <>
         <Searchbar onSubmit={this.handlerSubmit.bind(this)} />
-        <ToastContainer
-          position="top-right"
-          autoClose={3500}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-        />
         <Modal />
         {isLoading ? (
           <WatchProps />

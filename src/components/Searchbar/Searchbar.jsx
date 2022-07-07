@@ -2,29 +2,23 @@ import React, { Component } from 'react';
 
 // import PropTypes from 'prop-types';
 import stylebar from './style-bar.module.css';
-import toast from 'react-toastify';
+
 export default class Searchbar extends Component {
   state = {
     pool: '',
   };
+
   handleChange = event => {
     this.setState({
       pool: event.currentTarget.value.toLowerCase(),
     });
   };
+
   handleForm = event => {
     event.preventDefault();
 
     if (this.state.pool.trim() === '') {
-      toast.warn(`Фото ${this.state.pool} не загрузилися`, {
-        position: 'top-right',
-        autoClose: 3500,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: 1,
-      });
+      alert(`Фото ${this.state.pool} не загрузилися`);
 
       return;
     }
