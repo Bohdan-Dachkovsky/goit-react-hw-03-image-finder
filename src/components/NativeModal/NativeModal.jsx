@@ -1,9 +1,8 @@
-import { createPortal } from 'react-dom';
 import Button from '../Button/Button.jsx';
 import css from './popup.module.css';
-const nodeModal = document.getElementById('another-root');
+
 const NativeModal = ({ button }) => {
-  return createPortal(
+  return (
     <div className={css.popup}>
       <div className={css.overlay}>
         <div className={css.formBody}>
@@ -11,8 +10,7 @@ const NativeModal = ({ button }) => {
           <img src="" alt="" loading="eager" />
         </div>
       </div>
-    </div>,
-    nodeModal
+    </div>
   );
 };
 export default NativeModal;
