@@ -15,14 +15,18 @@ textarea {
 .button {
   background-color: #bfffc1;
   border: none;
-  color: yellowgreen;
-  background-color: rgb(104, 104, 150);
+  color: white;
+  text-transform: unset;
+  background-color: rgb(60, 60, 87);
   padding: 13px 26px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
   cursor: pointer;
+}
+.button:active {
+  background-color: rgb(25, 49, 70);
 }
 .sentform {
   box-sizing: border-box;

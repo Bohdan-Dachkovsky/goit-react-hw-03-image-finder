@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import Button from '../Button/Button.jsx';
-import css from './popup.module.css';
+import React, { Component } from 'react'
+import Button from '../Button/Button.jsx'
+import css from './popup.module.css'
 
 export default class NativeModal extends Component {
   render() {
@@ -13,6 +13,6 @@ export default class NativeModal extends Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }

@@ -1,4 +1,56 @@
+.distance {
+  flex-direction: column;
+  margin-top: 20px;
+  margin-left: 50px;
+}
+.btn {
+  display: flex;
+  position: absolute;
+  top: 670px;
+  border: none;
+  font-family: 'Lato';
+  font-size: inherit;
+  color: rgb(247, 247, 247);
+  background: none;
+  cursor: pointer;
+  background-color: #3c4b5a;
+  padding: 15px 40px;
+  margin: 8px 15px;
+  letter-spacing: 1px;
+  font-weight: 700;
+  outline: none;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.btn:active {
+  background: rgba(45, 64, 85, 0.4);
+}
+.div {
+  display: flex;
+  flex-direction: column;
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+li {
+  margin: 0px;
+  padding: 0px;
+  list-style-type: none;
+}
 .box {
-  width: 600px;
-  height: 600px;
+  display: flex;
+  max-width: 275px;
+  max-height: 180px;
+  float: left;
+  width: 18%;
+  padding: 10px;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  border: 1px solid black;
+}
+
+img {
+  max-width: 275px;
+  min-height: 180px;
 }
