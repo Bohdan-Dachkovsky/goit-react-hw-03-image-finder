@@ -5,7 +5,7 @@ import ImagineGallery from './components/ImagineGallery/ImagineGallery.jsx'
 import Searchbar from './components/Searchbar/Searchbar'
 import WatchProps from './components/Loader/Watch.jsx'
 import './index.css'
-
+import axios from 'axios'
 export default class App extends Component {
   state = {
     pool: '',
@@ -16,6 +16,19 @@ export default class App extends Component {
   loaderChange = (prevState) => {
     this.setState({ isLoading: !prevState })
   }
+  // componentDidMount() {
+  //   const axios = require('axios')
+  //   axios
+  //     .get(
+  //       'https://pixabay.com/api/?key=26335917-be25fd704b1936d7f202ea389&q=pool&page=6&per_page=12&image_type=photo',
+  //     )
+  //     .then(({ data }) => {
+  //       console.log(data)
+  //       this.setState({ photos: data.hits })
+  //     })
+  //     .catch((error) => console.log(error.messages))
+  // }
+
   // onChangeModal = () => {
   //   // onActive(this.state.showModal);
   //   this.setState((prevState) => {

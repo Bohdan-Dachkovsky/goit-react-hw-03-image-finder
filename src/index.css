@@ -8,6 +8,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
   list-style-type: none;
 }
+div > .box {
+  display: flex;
+}
 .active {
   background-color: rgba(0, 0, 0, 0.6);
   transition: cubic-bezier(0.075, 0.82, 0.165, 1);

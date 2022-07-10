@@ -9,14 +9,15 @@ export default class ImagineGallery extends Component {
     search: '',
     items: [],
     error: null,
-    page: 1,
+    page: 6,
     isLoading: false,
   }
 
   componentDidMount() {
+    const { page } = this.state
     axios
       .get(
-        'https://pixabay.com/api/?key=26335917-be25fd704b1936d7f202ea389&q=pool&page=6&per_page=12&image_type=photo',
+        `https://pixabay.com/api/?key=26335917-be25fd704b1936d7f202ea389&q=pool&page=${page}&per_page=12&image_type=photo`,
       )
       .then(({ data }) => {
         console.log(data)
@@ -25,9 +26,17 @@ export default class ImagineGallery extends Component {
       .catch((error) => console.log(error.messages))
   }
   componentDidUpdate(prevProps, prevState) {
-    const { page } = this.state
+    const { items, page } = this.state
     if (page > prevState.page) {
-      // this.fetchPosts();
+      axios
+        .get(
+          `https://pixabay.com/api/?key=26335917-be25fd704b1936d7f202ea389&q=pool&page=${page}&per_page=12&image_type=photo`,
+        )
+        .then(({ data }) => {
+          console.log(data)
+          this.setState({ items: data.hits })
+        })
+        .catch((error) => console.log(error.messages))
     }
   }
   // modalOpen = (prevState) => {
@@ -49,9 +58,9 @@ export default class ImagineGallery extends Component {
   //   }
   // }
 
-  // loadPage(prevState) {
-  //   this.setState({ page: prevState.page + 1 });
-  // }
+  loadPage = () => {
+    this.setState({ page: 1 })
+  }
 
   render() {
     const { items, error, isLoading } = this.state
@@ -62,20 +71,21 @@ export default class ImagineGallery extends Component {
         onClick={() => onShow({ largeImageURL, tags })}
         className={css.box}
       >
-        <li>
-          <img src={webformatURL} alt={tags} />
-        </li>
+        <ul className={css.list}>
+          <li className={css.el}>
+            <img src={webformatURL} alt={tags} />
+          </li>
+        </ul>
       </div>
     ))
     return (
       <div className={css.distance}>
         {error && console.log('Виникла помилка, cпробуйте будь ласка пізніше')}
-        {items.length && photos}
-        {!isLoading && items.length >= 9 && (
-          <button className={css.btn} onClick={this.loadPage}>
-            Load More
-          </button>
-        )}
+
+        <div className={css.container}>{items.length && photos}</div>
+        <button className={css.btn} onClick={this.loadPage}>
+          Load More
+        </button>
       </div>
     )
   }
