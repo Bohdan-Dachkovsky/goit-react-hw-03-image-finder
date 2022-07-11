@@ -5,12 +5,12 @@ import ImagineGallery from './components/ImagineGallery/ImagineGallery.jsx'
 import Searchbar from './components/Searchbar/Searchbar'
 import WatchProps from './components/Loader/Watch.jsx'
 import './index.css'
-import axios from 'axios'
+// import axios from 'axios'
 export default class App extends Component {
   state = {
     pool: '',
     modalImages: {},
-    showModal: true,
+    showModal: false,
     isLoading: false,
   }
   loaderChange = (prevState) => {

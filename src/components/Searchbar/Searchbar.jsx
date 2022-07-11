@@ -1,33 +1,33 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 // import PropTypes from 'prop-types';
-import stylebar from './style-bar.module.css';
+import stylebar from './style-bar.module.css'
 
 export default class Searchbar extends Component {
   state = {
     pool: '',
-  };
+  }
 
-  handleChange = event => {
+  handleChange = (event) => {
     this.setState({
       pool: event.currentTarget.value.toLowerCase(),
-    });
-  };
+    })
+  }
 
-  handleForm = event => {
-    event.preventDefault();
+  handleForm = (event) => {
+    event.preventDefault()
 
-    if (this.state.pool.trim() === '') {
-      alert(`Фото ${this.state.pool} не загрузилися`);
+    if (this.state.pool === '') {
+      alert(`Фото ${this.state.pool} не загрузилися`)
 
-      return;
+      return
     }
-    this.props.onSubmit(this.state.pool);
-    this.setState({ pool: '' });
-  };
+    this.props.onSubmit(this.state.pool)
+    // this.setState({ pool: '' })
+  }
 
   render() {
-    const { handleForm, handleChange } = this;
+    const { handleForm, handleChange } = this
     return (
       <header className={stylebar.searchbar}>
         <form onSubmit={handleForm} className={stylebar.form}>
@@ -46,6 +46,6 @@ export default class Searchbar extends Component {
           </label>
         </form>
       </header>
-    );
+    )
   }
 }

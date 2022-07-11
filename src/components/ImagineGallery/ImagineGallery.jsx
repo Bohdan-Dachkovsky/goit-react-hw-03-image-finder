@@ -14,10 +14,11 @@ export default class ImagineGallery extends Component {
   }
 
   componentDidMount() {
+    const { searchName } = this.props
     const { page } = this.state
     axios
       .get(
-        `https://pixabay.com/api/?key=26335917-be25fd704b1936d7f202ea389&q=pool&page=${page}&per_page=12&image_type=photo`,
+        `https://pixabay.com/api/?key=26335917-be25fd704b1936d7f202ea389&q=${searchName}&page=${page}&per_page=12&image_type=photo`,
       )
       .then(({ data }) => {
         console.log(data)
@@ -26,11 +27,14 @@ export default class ImagineGallery extends Component {
       .catch((error) => console.log(error.messages))
   }
   componentDidUpdate(prevProps, prevState) {
-    const { items, page } = this.state
-    if (page > prevState.page) {
+    const { searchName } = this.props
+    const { page } = this.state
+
+    console.log(page)
+    if (page !== prevState.page) {
       axios
         .get(
-          `https://pixabay.com/api/?key=26335917-be25fd704b1936d7f202ea389&q=pool&page=${page}&per_page=12&image_type=photo`,
+          `https://pixabay.com/api/?key=26335917-be25fd704b1936d7f202ea389&q=${searchName}&page=${page}&per_page=12&image_type=photo`,
         )
         .then(({ data }) => {
           console.log(data)
@@ -58,12 +62,12 @@ export default class ImagineGallery extends Component {
   //   }
   // }
 
-  loadPage = () => {
-    this.setState({ page: 1 })
+  loadPage = (prevState) => {
+    this.setState({ page: prevState.page + 1 })
   }
 
   render() {
-    const { items, error, isLoading } = this.state
+    const { items, error } = this.state
     const { onShow } = this.props
     const photos = items.map(({ id, largeImageURL, webformatURL, tags }) => (
       <div
