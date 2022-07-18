@@ -4,6 +4,7 @@ import Modal from './components/Modal/Modal'
 import ImagineGallery from './components/ImagineGallery/ImagineGallery.jsx'
 import Searchbar from './components/Searchbar/Searchbar'
 import WatchProps from './components/Loader/Watch.jsx'
+
 import './index.css'
 import axios from 'axios'
 export default class App extends Component {
@@ -45,7 +46,6 @@ export default class App extends Component {
         `https://pixabay.com/api/?key=26335917-be25fd704b1936d7f202ea389&q=pool&page=${page}&per_page=12&image_type=photo`,
       )
       .then(({ data }) => {
-        console.log(data)
         this.setState({ items: data.hits })
       })
       .catch((error) => console.log(error.messages))
@@ -66,7 +66,6 @@ export default class App extends Component {
           `https://pixabay.com/api/?key=26335917-be25fd704b1936d7f202ea389&q=${searchName}&page=${page}&per_page=12&image_type=photo`,
         )
         .then(({ data }) => {
-          console.log(data)
           this.setState({ items: data.hits })
         })
         .catch((error) => this.setState({ error: error.message }))
@@ -91,7 +90,11 @@ export default class App extends Component {
             onLoader={this.loaderChange}
             onBox={this.handlerActive}
             onShow={this.onLargeImg}
-          />
+          >
+            <button className="btn" onClick={this.loadPage}>
+              Load More
+            </button>
+          </ImagineGallery>
         )}
       </>
     )

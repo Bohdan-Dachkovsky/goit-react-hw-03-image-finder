@@ -24,9 +24,7 @@ export default class ImagineGallery extends Component {
         {error && console.log('Виникла помилка, cпробуйте будь ласка пізніше')}
 
         <div className={css.container}>{items.length && photos}</div>
-        <button className={css.btn} onClick={this.loadPage}>
-          Load More
-        </button>
+        {this.props.children}
       </div>
     )
   }
@@ -44,7 +42,7 @@ ImagineGallery.propTypes = {
       tags: PropTypes.string.isRequired,
     }),
   ),
-  error: PropTypes.string.isRequired,
+  error: PropTypes.string,
   onLoader: PropTypes.func.isRequired,
   onBox: PropTypes.func.isRequired,
   onShow: PropTypes.func.isRequired,
