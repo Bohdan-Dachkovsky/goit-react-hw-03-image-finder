@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/goit-react-hw-03-image-finder/precache-manifest.cfe5abe6a4fca9b3322377807e7d2f46.js"
+  "/goit-react-hw-04-images/precache-manifest.cf5b2b17e2a68b77092f078b12dc0e70.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/goit-react-hw-03-image-finder/index.html", {
+workbox.routing.registerNavigationRoute("/goit-react-hw-04-images/index.html", {
   
   blacklist: [/^\/_/,/\/[^/]+\.[^/]+$/],
 });
