@@ -62,7 +62,7 @@ export default class App extends Component {
     const { page, pool } = this.state
     this.setState({ isLoading: true })
 
-    if (pool && page !== prevState.page) {
+    if (pool !== prevState.pool && page !== prevState.page) {
       axios
         .get(
           `https://pixabay.com/api/?key=26335917-be25fd704b1936d7f202ea389&q=${pool}&page=${page}&per_page=12&image_type=photo`,
@@ -71,10 +71,9 @@ export default class App extends Component {
           this.setState({ items: data.hits, isLoading: false })
         })
         .catch((error) => this.setState({ error: error.message }))
-    } else {
-      throw new Error('Sorry, error')
     }
   }
+
   loadPage = () => {
     this.setState((prevState) => ({ page: prevState.page + 1 }))
   }

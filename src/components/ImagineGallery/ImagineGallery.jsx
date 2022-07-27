@@ -20,7 +20,7 @@ const ImagineGallery = ({ onShow, items, error, Children }) => {
     <div className={css.distance}>
       {error && console.log('Виникла помилка, cпробуйте будь ласка пізніше')}
 
-      <div className={css.container}>{items.length && photos}</div>
+      <div className={css.container}>{Boolean(items.length) && photos}</div>
       {Children}
     </div>
   )
