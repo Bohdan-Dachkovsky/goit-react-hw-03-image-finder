@@ -16,10 +16,10 @@ export default class App extends Component {
     items: [],
     error: null,
     page: 6,
-    isLoading: false,
   }
-  loaderChange = (prevState) => {
-    this.setState({ isLoading: !prevState })
+
+  loaderChange = () => {
+    this.setState((prevState) => ({ isLoading: !prevState.isLoading }))
   }
 
   onLargeImg = ({ largeImageURL, tags }) => {
@@ -32,47 +32,50 @@ export default class App extends Component {
     this.setState({ pool })
   }
   handlerActive = () => {
-    this.setState((showModal) => ({ showModal: !showModal }))
+    this.setState((showModal) => ({ showModal: !showModal.showModal }))
   }
 
   onToggleModal = () => {
-    this.setState((prevState) => ({ showModal: !prevState }))
+    this.setState((prevState) => ({ showModal: !prevState.showModal }))
   }
 
-  componentDidMount() {
-    const { page } = this.state
-    axios
-      .get(
-        `https://pixabay.com/api/?key=26335917-be25fd704b1936d7f202ea389&q=pool&page=${page}&per_page=12&image_type=photo`,
-      )
-      .then(({ data }) => {
-        this.setState({ items: data.hits })
-      })
-      .catch((error) => console.log(error.messages))
-    window.addEventListener('keydown', (e) => {
-      if (e.code === 'Escape') {
-        this.onToggleModal()
-      }
-    })
-  }
+  // componentDidMount() {
+  //   const { page } = this.state
+  //   axios
+  //     .get(
+  //       `https://pixabay.com/api/?key=26335917-be25fd704b1936d7f202ea389&q=pool&page=${page}&per_page=12&image_type=photo`,
+  //     )
+  //     .then(({ data }) => {
+  //       this.setState({ items: data.hits })
+  //     })
+  //     .catch((error) => console.log(error.messages))
+  //   window.addEventListener('keydown', (e) => {
+  //     if (e.code === 'Escape') {
+  //       this.onToggleModal()
+  //     }
+  //   })
+  // }
+
   componentDidUpdate(prevProps, prevState) {
-    const searchName = this.state.pool
-    const { page } = this.state
-
+    const { page, pool } = this.state
     console.log(page)
-    if (page !== prevState.page) {
-      axios
-        .get(
-          `https://pixabay.com/api/?key=26335917-be25fd704b1936d7f202ea389&q=${searchName}&page=${page}&per_page=12&image_type=photo`,
-        )
-        .then(({ data }) => {
-          this.setState({ items: data.hits })
-        })
-        .catch((error) => this.setState({ error: error.message }))
+    if (pool && prevState !== this.state) {
+      if (page !== prevState.page) {
+        axios
+          .get(
+            `https://pixabay.com/api/?key=26335917-be25fd704b1936d7f202ea389&q=${pool}&page=${page}&per_page=12&image_type=photo`,
+          )
+          .then(({ data }) => {
+            this.setState({ items: data.hits })
+          })
+          .catch((error) => this.setState({ error: error.message }))
+      } else {
+        throw new Error('Sorry, error')
+      }
     }
   }
-  loadPage = (prevState) => {
-    this.setState({ page: prevState.page + 1 })
+  loadPage = () => {
+    this.setState((prevState) => ({ page: prevState.page + 1 }))
   }
   render() {
     const { items, showModal, error, isLoading } = this.state

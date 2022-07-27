@@ -1,8 +1,8 @@
 {
-  "name": "goit-react-hw-04-images",
+  "name": "goit-react-hw-03-images",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://bohdan-dachkovsky.github.io/goit-react-hw-04-images/",
+  "homepage": "https://bohdan-dachkovsky.github.io/goit-react-hw-03-images/",
   "dependencies": {
     "axios": "^0.27.2",
     "core-js": "^3.22.8",
