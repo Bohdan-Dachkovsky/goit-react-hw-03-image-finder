@@ -21,7 +21,7 @@ const ImagineGallery = ({ onShow, items, error, Children }) => {
       {error && console.log('Виникла помилка, cпробуйте будь ласка пізніше')}
 
       <div className={css.container}>{items.length && photos}</div>
-      {Children}
+      {this.props.onLoader ? Children : null}
     </div>
   )
 }

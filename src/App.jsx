@@ -23,16 +23,18 @@ export default class App extends Component {
   }
 
   onLargeImg = ({ largeImageURL, tags }) => {
+    console.log(this.state.items)
     this.setState({
       showModal: true,
       modalImages: { largeImageURL, tags },
     })
   }
+
   handlerSubmit = (pool) => {
     this.setState({ pool })
   }
   handlerActive = () => {
-    this.setState((showModal) => ({ showModal: !showModal.showModal }))
+    this.setState((showModal) => ({ showModal: !showModal }))
   }
 
   onToggleModal = () => {
@@ -59,7 +61,8 @@ export default class App extends Component {
   componentDidUpdate(prevProps, prevState) {
     const { page, pool } = this.state
     console.log(page)
-    if (pool && prevState !== this.state) {
+    // this.setState({ isLoading: true })
+    if (pool) {
       if (page !== prevState.page) {
         axios
           .get(
