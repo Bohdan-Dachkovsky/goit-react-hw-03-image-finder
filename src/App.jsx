@@ -31,7 +31,7 @@ export default class App extends Component {
   }
 
   handlerSubmit = (pool) => {
-    this.setState({ pool })
+    this.setState({ pool: pool })
   }
   handlerActive = () => {
     this.setState((showModal) => ({ showModal: !showModal }))
@@ -60,21 +60,19 @@ export default class App extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     const { page, pool } = this.state
-    console.log(page)
-    // this.setState({ isLoading: true })
-    if (pool) {
-      if (page !== prevState.page) {
-        axios
-          .get(
-            `https://pixabay.com/api/?key=26335917-be25fd704b1936d7f202ea389&q=${pool}&page=${page}&per_page=12&image_type=photo`,
-          )
-          .then(({ data }) => {
-            this.setState({ items: data.hits })
-          })
-          .catch((error) => this.setState({ error: error.message }))
-      } else {
-        throw new Error('Sorry, error')
-      }
+    this.setState({ isLoading: true })
+
+    if (pool && page !== prevState.page) {
+      axios
+        .get(
+          `https://pixabay.com/api/?key=26335917-be25fd704b1936d7f202ea389&q=${pool}&page=${page}&per_page=12&image_type=photo`,
+        )
+        .then(({ data }) => {
+          this.setState({ items: data.hits, isLoading: false })
+        })
+        .catch((error) => this.setState({ error: error.message }))
+    } else {
+      throw new Error('Sorry, error')
     }
   }
   loadPage = () => {
