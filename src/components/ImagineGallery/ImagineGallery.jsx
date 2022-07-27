@@ -28,9 +28,6 @@ const ImagineGallery = ({ onShow, items, error, Children }) => {
 export default ImagineGallery
 ImagineGallery.defaultProps = {
   searchName: '',
-}
-
-ImagineGallery.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
@@ -39,6 +36,9 @@ ImagineGallery.propTypes = {
       tags: PropTypes.string.isRequired,
     }),
   ),
+}
+
+ImagineGallery.propTypes = {
   error: PropTypes.string,
   onLoader: PropTypes.func.isRequired,
   onBox: PropTypes.func.isRequired,
