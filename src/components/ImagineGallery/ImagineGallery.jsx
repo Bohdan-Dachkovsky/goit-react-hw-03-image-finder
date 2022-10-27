@@ -1,7 +1,6 @@
-import css from './gallery.module.css'
+import css from './imageGallery.module.css'
 import PropTypes from 'prop-types'
 
-// import { getPosts } from '../../shared/services/post.js';
 const ImagineGallery = ({ onShow, items, error, Children }) => {
   const photos = items.map(({ id, largeImageURL, webformatURL, tags }) => (
     <div

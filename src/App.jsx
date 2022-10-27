@@ -12,7 +12,7 @@ export default class App extends Component {
     pool: '',
     modalImages: {},
     showModal: false,
-    isLoading: false,
+    isLoading: true,
     items: [],
     error: null,
     page: 6,
@@ -45,7 +45,7 @@ export default class App extends Component {
   //   const { page } = this.state
   //   axios
   //     .get(
-  //       `https://pixabay.com/api/?key=26335917-be25fd704b1936d7f202ea389&q=pool&page=${page}&per_page=12&image_type=photo`,
+  // `https://pixabay.com/api/?key=26335917-be25fd704b1936d7f202ea389&q=pool&page=${page}&per_page=12&image_type=photo`,
   //     )
   //     .then(({ data }) => {
   //       this.setState({ items: data.hits })
@@ -61,17 +61,14 @@ export default class App extends Component {
   componentDidUpdate(prevProps, prevState) {
     const { page, pool } = this.state
 
-    if (pool !== prevState.pool || page !== prevState.page) {
-      this.setState({ isLoading: true })
-      axios
-        .get(
-          `https://pixabay.com/api/?key=26335917-be25fd704b1936d7f202ea389&q=${pool}&page=${page}&per_page=12&image_type=photo`,
-        )
-        .then(({ data }) => {
-          this.setState({ items: data.hits, isLoading: false })
-        })
-        .catch((error) => this.setState({ error: error.message }))
-    }
+    axios
+      .get(
+        `https://pixabay.com/api/?key=26335917-be25fd704b1936d7f202ea389&q=${pool}&page=${page}&per_page=12&image_type=photo`,
+      )
+      .then(({ data }) => {
+        this.setState({ items: data.hits, isLoading: false })
+      })
+      .catch((error) => this.setState({ error: error.message }))
   }
 
   loadPage = () => {
