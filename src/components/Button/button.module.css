@@ -1,13 +1,15 @@
 .button {
   position: absolute;
   color: black;
+  display: block;
   padding: 0px;
-  width: 35px;
-  height: 30px;
-  top: 0px;
-  left: 824px;
-  border: 0px;
+  width: 150px;
+  height: 65px;
+  top: 1050px;
+  left: 65px;
+  border: 2px royalblue solid;
   text-decoration: none;
   border-radius: 0px;
-  background-color: white;
+  color: white;
+  background-color: rgb(60, 60, 87);
 }

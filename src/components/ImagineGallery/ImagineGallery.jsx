@@ -1,7 +1,7 @@
 import css from './imageGallery.module.css'
 import PropTypes from 'prop-types'
 
-const ImagineGallery = ({ onShow, items, error, Children }) => {
+const ImagineGallery = ({ onShow, items, error, basement, children }) => {
   const photos = items.map(({ id, largeImageURL, webformatURL, tags }) => (
     <div
       key={id}
@@ -19,8 +19,9 @@ const ImagineGallery = ({ onShow, items, error, Children }) => {
     <div className={css.distance}>
       {error && console.log('Виникла помилка, cпробуйте будь ласка пізніше')}
 
-      <div className={css.container}>{Boolean(items.length) && photos}</div>
-      {Children}
+      <div className={css.miniContainer}>{Boolean(items.length) && photos}</div>
+      {children}
+      <div className="pageButton">{basement}</div>
     </div>
   )
 }

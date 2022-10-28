@@ -4,6 +4,7 @@ import Modal from './components/Modal/Modal'
 import ImagineGallery from './components/ImagineGallery/ImagineGallery.jsx'
 import Searchbar from './components/Searchbar/Searchbar'
 import WatchProps from './components/Loader/Watch.jsx'
+import Button from './components/Button/Button.jsx'
 
 import './index.css'
 import axios from 'axios'
@@ -15,7 +16,7 @@ export default class App extends Component {
     isLoading: true,
     items: [],
     error: null,
-    page: 6,
+    page: 1,
   }
 
   loaderChange = () => {
@@ -74,11 +75,12 @@ export default class App extends Component {
   loadPage = () => {
     this.setState((prevState) => ({ page: prevState.page + 1 }))
   }
+
   render() {
     const { items, showModal, error, isLoading } = this.state
 
     return (
-      <>
+      <div className="pageApp">
         <Searchbar onSubmit={this.handlerSubmit} />
         {showModal && <Modal onActive={this.onToggleModal} />}
         {isLoading ? (
@@ -90,13 +92,10 @@ export default class App extends Component {
             onLoader={this.loaderChange}
             onBox={this.handlerActive}
             onShow={this.onLargeImg}
-          >
-            <button className="btn" onClick={this.loadPage}>
-              Load More
-            </button>
-          </ImagineGallery>
+            basement=<Button className="btn" onClick={this.loadPage} />
+          ></ImagineGallery>
         )}
-      </>
+      </div>
     )
   }
 }

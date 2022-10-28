@@ -1,3 +1,14 @@
+.distance {
+  display: flex;
+}
+.pageButton {
+  max-height: 0px;
+  max-width: 0px;
+}
+.distance button:nth-child(2) {
+  display: block;
+  height: 3 0px;
+}
 div {
   margin: 0px;
   padding: 0px;
@@ -6,7 +17,7 @@ ul {
   margin: 0px;
   padding: 0px;
 }
-.container {
+.miniContainer {
   display: flex;
   flex-wrap: wrap;
   margin: 50px;

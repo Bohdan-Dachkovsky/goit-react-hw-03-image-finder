@@ -3,7 +3,7 @@
   margin-left: 100px;
   background-color: hsl(0, 0%, 90%);
   border-radius: 0;
-  -webkit-appearance: none;
+  appearance: none;
 }
 button,
 input,
@@ -41,7 +41,7 @@ textarea {
   background: no-repeat;
   display: flex;
   height: auto;
-  min-width: 500px;
+  min-width: auto;
   align-items: center;
   color: #fff;
   text-shadow: rgb(104, 104, 150) 0 0 0.2em;

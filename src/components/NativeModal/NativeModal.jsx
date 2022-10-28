@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Button from '../Button/Button.jsx'
 import css from './popup.module.css'
 
 export default class NativeModal extends Component {
@@ -15,9 +14,9 @@ export default class NativeModal extends Component {
       <div className={css.popup}>
         <div className={css.overlay}>
           <div className={css.formBody}>
-            <Button clasName={css.close} onClick={this.props.button}>
-              x
-            </Button>
+            <button className={css.close} onClick={this.props.button}>
+              ⨷
+            </button>
             <img src="" alt="" loading="eager" />
           </div>
         </div>
