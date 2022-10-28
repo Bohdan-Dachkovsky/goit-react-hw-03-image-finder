@@ -2,7 +2,7 @@
   "name": "goit-react-hw-03-images",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://bohdan-dachkovsky.github.io/goit-react-hw-03-images/",
+  "homepage": "https://bohdan-dachkovsky.github.io/goit-react-hw-03-image-finder/",
   "dependencies": {
     "axios": "^0.27.2",
     "core-js": "^3.22.8",
