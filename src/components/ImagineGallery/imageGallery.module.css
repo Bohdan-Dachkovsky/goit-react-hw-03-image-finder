@@ -5,9 +5,8 @@
   max-height: 0px;
   max-width: 0px;
 }
-.distance button:nth-child(2) {
-  display: block;
-  height: 3 0px;
+button:last-of-type {
+  height: 50px;
 }
 div {
   margin: 0px;
@@ -20,7 +19,7 @@ ul {
 .miniContainer {
   display: flex;
   flex-wrap: wrap;
-  margin: 50px;
+  margin: 25px 50px;
 }
 .box {
   display: grid;

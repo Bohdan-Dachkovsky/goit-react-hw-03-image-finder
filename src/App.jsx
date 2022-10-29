@@ -3,11 +3,19 @@ import React, { Component } from 'react'
 import Modal from './components/Modal/Modal'
 import ImagineGallery from './components/ImagineGallery/ImagineGallery.jsx'
 import Searchbar from './components/Searchbar/Searchbar'
-import WatchProps from './components/Loader/Watch.jsx'
+// import WatchProps from './components/Loader/Watch.jsx'
+import ClipLoader from 'react-spinners/ClipLoader'
 import Button from './components/Button/Button.jsx'
 
 import './index.css'
 import axios from 'axios'
+
+const override = {
+  display: 'block',
+  margin: '0 auto',
+  borderColor: 'red',
+}
+
 export default class App extends Component {
   state = {
     pool: '',
@@ -84,7 +92,16 @@ export default class App extends Component {
         <Searchbar onSubmit={this.handlerSubmit} />
         {showModal && <Modal onActive={this.onToggleModal} />}
         {isLoading ? (
-          <WatchProps />
+          <span className="loaderSpinner">
+            <ClipLoader
+              color={'#ffffff'}
+              loading={isLoading}
+              cssOverride={override}
+              size={160}
+              aria-label="Loading Spinner"
+              data-testid="loader"
+            />
+          </span>
         ) : (
           <ImagineGallery
             items={items}

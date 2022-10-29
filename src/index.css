@@ -8,6 +8,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
   list-style-type: none;
 }
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
 .pageApp {
   display: flex;
   flex-direction: column;
@@ -28,10 +33,6 @@ body {
   transition: cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
 .userlistContainer {
   display: flex;
 }
@@ -87,4 +88,8 @@ code {
 }
 .btn:active {
   background: rgba(45, 64, 85, 0.4);
+}
+
+.loaderSpinner {
+  margin: 150px auto;
 }
