@@ -79,10 +79,9 @@ export default class App extends Component {
           },
         )
         .then(({ data }) => {
-          this.setState({ items: data.hits })
+          this.setState({ items: data.hits, isLoading: false })
         })
         .catch((error) => this.setState({ error: error.message }))
-        .finally(this.setState({ isLoading: false }))
     }
   }
 
