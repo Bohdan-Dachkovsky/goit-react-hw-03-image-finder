@@ -21,7 +21,7 @@ export default class App extends Component {
     pool: '',
     modalImages: {},
     showModal: false,
-    isLoading: true,
+    isLoading: false,
     items: [],
     error: null,
     page: 1,
@@ -40,7 +40,7 @@ export default class App extends Component {
   }
 
   handlerSubmit = (pool) => {
-    this.setState({ pool: pool })
+    this.setState({ pool: pool, page: 1, items: [] })
   }
   handlerActive = () => {
     this.setState((showModal) => ({ showModal: !showModal }))
@@ -69,15 +69,18 @@ export default class App extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     const { page, pool } = this.state
-
-    axios
-      .get(
-        `https://pixabay.com/api/?key=26335917-be25fd704b1936d7f202ea389&q=${pool}&page=${page}&per_page=12&image_type=photo`,
-      )
-      .then(({ data }) => {
-        this.setState({ items: data.hits, isLoading: false })
-      })
-      .catch((error) => this.setState({ error: error.message }))
+    this.setState({ isLoading: !prevState })
+    if (this.state !== prevState) {
+      axios
+        .get(
+          `https://pixabay.com/api/?key=26335917-be25fd704b1936d7f202ea389&q=${pool}&page=${page}&per_page=12&image_type=photo`,
+        )
+        .then(({ data }) => {
+          this.setState({ items: data.hits })
+        })
+        .catch((error) => this.setState({ error: error.message }))
+        .finally(this.setState({ isLoading: true }))
+    }
   }
 
   loadPage = () => {
