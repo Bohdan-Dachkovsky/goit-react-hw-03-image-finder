@@ -6,7 +6,6 @@ import Searchbar from './components/Searchbar/Searchbar'
 // import WatchProps from './components/Loader/Watch.jsx'
 import ClipLoader from 'react-spinners/ClipLoader'
 import Button from './components/Button/Button.jsx'
-
 import './index.css'
 import axios from 'axios'
 
@@ -69,17 +68,17 @@ export default class App extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     const { page, pool } = this.state
-    this.setState({ isLoading: !prevState })
-    if (this.state.pool !== prevState.pool) {
+
+    if (prevState.pool !== this.state.pool) {
       axios
         .get(
           `https://pixabay.com/api/?key=26335917-be25fd704b1936d7f202ea389&q=${pool}&page=${page}&per_page=12&image_type=photo`,
         )
         .then(({ data }) => {
-          this.setState({ items: data.hits })
+          this.setState({ items: data.hits, isLoading: true })
         })
         .catch((error) => this.setState({ error: error.message }))
-        .finally(this.setState({ isLoading: true }))
+        .finally(this.setState({ isLoading: false }))
     }
   }
 
