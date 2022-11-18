@@ -70,7 +70,7 @@ export default class App extends Component {
   componentDidUpdate(prevProps, prevState) {
     const { page, pool } = this.state
     this.setState({ isLoading: !prevState })
-    if (this.state !== prevState) {
+    if (this.state.pool !== prevState.pool) {
       axios
         .get(
           `https://pixabay.com/api/?key=26335917-be25fd704b1936d7f202ea389&q=${pool}&page=${page}&per_page=12&image_type=photo`,

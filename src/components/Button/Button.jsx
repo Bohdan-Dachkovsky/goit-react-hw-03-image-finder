@@ -5,7 +5,13 @@ import bcss from './button.module.css'
 const Button = ({ onClick, children = <span>button Load More</span> }) => {
   return (
     <>
-      <button onClick={onClick} className={bcss.button} type="submit">
+      <button
+        onClick={() => {
+          onClick()
+        }}
+        className={bcss.button}
+        type="submit"
+      >
         Load More
       </button>
     </>
