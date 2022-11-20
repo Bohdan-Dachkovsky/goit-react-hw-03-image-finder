@@ -17,7 +17,11 @@ export default class NativeModal extends Component {
             <button className={css.close} onClick={this.props.button}>
               ⨷
             </button>
-            <img src="" alt="" loading="eager" />
+            <img
+              src={this.props.setImg.largeImageURL}
+              alt="images"
+              loading="eager"
+            />
           </div>
         </div>
       </div>

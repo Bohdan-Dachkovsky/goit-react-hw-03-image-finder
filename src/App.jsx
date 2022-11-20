@@ -95,7 +95,12 @@ export default class App extends Component {
     return (
       <div className="pageApp">
         <Searchbar onSubmit={this.handlerSubmit} />
-        {showModal && <Modal onActive={this.onToggleModal} />}
+        {showModal && (
+          <Modal
+            images={this.state.modalImages}
+            onActive={this.onToggleModal}
+          />
+        )}
         {isLoading ? (
           <span className="loaderSpinner">
             <ClipLoader
