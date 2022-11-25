@@ -80,7 +80,7 @@ export default class App extends Component {
         )
         .then(({ data }) => {
           this.setState({
-            items: [prevState.items, data.hits],
+            items: [...prevState.items, data.hits],
             isLoading: false,
           })
         })
