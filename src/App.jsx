@@ -79,10 +79,10 @@ export default class App extends Component {
           },
         )
         .then(({ data }) => {
-          this.setState({
+          this.setState((prevState) => ({
             items: [...prevState.items, ...data.hits],
             isLoading: false,
-          })
+          }))
         })
         .catch((error) => this.setState({ error: error.message }))
     }
